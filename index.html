@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="ReMMD is a realistic multilingual multi-image agentic verification framework for multimodal misinformation detection."
+    >
+    <title>ReMMD | ReMMDBench</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="ReMMD home">
+          <span class="brand-mark">R</span>
+          <span>ReMMD</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#benchmark">Benchmark</a>
+          <a href="#agent">Agent</a>
+          <a href="#leaderboard">Leaderboard</a>
+          <a href="#samples">Samples</a>
+          <a href="#citation">Citation</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero section-band">
+          <div class="hero-media" aria-hidden="true">
+            <img src="assets/figures/teaser.webp" alt="">
+          </div>
+          <div class="hero-content reveal">
+            <p class="eyebrow">Realistic multimodal misinformation detection</p>
+            <h1>ReMMD: Realistic Multilingual Multi-Image Agentic Verification</h1>
+            <p class="hero-copy">
+              ReMMD pairs ReMMDBench, a multilingual multi-image benchmark with graded veracity
+              and distortion labels, with ReMMD-Agent, a persistent-memory verifier for
+              evidence-centered multimodal misinformation detection.
+            </p>
+            <div class="hero-actions" aria-label="Project links">
+              <a class="action-button primary" href="https://github.com/DANG-ai/ReMMDBench-Agent" target="_blank" rel="noreferrer">Code</a>
+              <a class="action-button" href="#" data-placeholder="The arXiv link is reserved and will be activated after release.">Paper</a>
+              <a class="action-button" href="#" data-placeholder="The Hugging Face benchmark link is reserved and will be activated after release.">Benchmark</a>
+            </div>
+            <div class="authors">
+              <p>
+                Chenhao Dang, Dantong Zhu, Yang Jun, Conghui He, Weijia Li
+              </p>
+              <p>
+                Shanghai Jiao Tong University · Shanghai AI Laboratory · Tsinghua University · Central South University · CETC 15th Research Institute
+              </p>
+            </div>
+            <div class="logo-strip" aria-label="Affiliation logos">
+              <img src="assets/logos/sjtu.webp" alt="Shanghai Jiao Tong University logo">
+              <img src="assets/logos/thu.webp" alt="Tsinghua University logo">
+              <img class="wide-logo" src="assets/logos/opendatalab.svg" alt="OpenDataLab logo">
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-ribbon section-band reveal" aria-label="Benchmark statistics">
+          <div class="stat-tile">
+            <strong>500</strong>
+            <span>samples</span>
+          </div>
+          <div class="stat-tile">
+            <strong>2,756</strong>
+            <span>images</span>
+          </div>
+          <div class="stat-tile">
+            <strong>5 + 2</strong>
+            <span>languages and cross-lingual settings</span>
+          </div>
+          <div class="stat-tile">
+            <strong>5-way</strong>
+            <span>L1 veracity labels</span>
+          </div>
+          <div class="stat-tile">
+            <strong>8</strong>
+            <span>L2 distortion labels</span>
+          </div>
+        </section>
+
+        <section id="benchmark" class="section-band reveal">
+          <div class="section-heading">
+            <p class="eyebrow">ReMMDBench</p>
+            <h2>A benchmark built around operational verification pressure</h2>
+            <p>
+              ReMMDBench moves beyond single-image binary detection by combining long multilingual
+              narratives, carousel-style image sets, mixed provenance, five-way veracity, eight
+              distortion labels, and audited rationales.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-kicker">Multilingual</span>
+              <h3>Five monolingual languages plus cross-lingual transfer</h3>
+              <p>English, Chinese, German, Japanese, and French samples expose regional evidence access, entity anchoring, and cross-script variation.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-kicker">Multi-image</span>
+              <h3>Posts with evidence, decoration, reuse, and edited visuals</h3>
+              <p>Each verifier must decide which images matter, which are persuasive context, and which introduce visual or cross-modal distortion.</p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-kicker">Hierarchical labels</span>
+              <h3>L1 verdicts, L2 distortion diagnosis, and L3 rationales</h3>
+              <p>The task asks systems to calibrate partial truth, diagnose the mechanism of distortion, and justify the decision.</p>
+            </article>
+          </div>
+          <figure class="paper-figure">
+            <img src="assets/figures/benchmark-pipeline.webp" alt="ReMMDBench construction pipeline">
+            <figcaption>Benchmark construction controls topic, language, length, image provenance, label conditions, and evidence validation.</figcaption>
+          </figure>
+          <figure class="paper-figure compact">
+            <img src="assets/figures/benchmark-stats.webp" alt="ReMMDBench statistics panels">
+            <figcaption>Language, distortion, image provenance, and text-length distributions in ReMMDBench.</figcaption>
+          </figure>
+        </section>
+
+        <section id="agent" class="section-band accent-band reveal">
+          <div class="section-heading">
+            <p class="eyebrow">ReMMD-Agent</p>
+            <h2>Persistent evidence memory before judgment</h2>
+            <p>
+              ReMMD-Agent decomposes posts into atomic claims, observations, and image bindings,
+              retrieves multimodal evidence, reuses a memory bank, and predicts structured L1/L2/L3
+              outputs from an explicit evidence state.
+            </p>
+          </div>
+          <div class="agent-flow">
+            <figure class="paper-figure">
+              <img src="assets/figures/agent-pipeline.webp" alt="ReMMD-Agent pipeline">
+              <figcaption>Atomic parsing and persistent evidence reuse reduce redundant retrieval while keeping judgments traceable.</figcaption>
+            </figure>
+            <div class="agent-points">
+              <article>
+                <strong>Atomic parsing</strong>
+                <span>Separates central claims, image observations, and text-image bindings before retrieval.</span>
+              </article>
+              <article>
+                <strong>Memory reuse</strong>
+                <span>Stores reusable evidence so related claims and images do not trigger redundant tool calls.</span>
+              </article>
+              <article>
+                <strong>Structured judgment</strong>
+                <span>Produces five-way veracity, eight-label distortion diagnosis, and a concise rationale.</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="leaderboard" class="section-band reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Leaderboard</p>
+            <h2>Main ReMMDBench results</h2>
+            <p>
+              On the full 500-sample split, ReMMD-Agent with GPT-5.2 achieves the best five-way
+              veracity performance, while ReMMD-Agent with Qwen3.5-9B gives the strongest L2 macro-F1
+              among comparable open-backbone runs.
+            </p>
+          </div>
+          <div class="leaderboard-wrap">
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>System</th>
+                  <th>Backbone</th>
+                  <th>L1 Acc.</th>
+                  <th>L1 Macro-F1</th>
+                  <th>L2 Macro-F1</th>
+                  <th>L2 Exact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Manus</td>
+                  <td>proprietary</td>
+                  <td>30.00</td>
+                  <td>28.35</td>
+                  <td>40.06</td>
+                  <td>2.20</td>
+                </tr>
+                <tr>
+                  <td>ChatGPT</td>
+                  <td>proprietary</td>
+                  <td>30.20</td>
+                  <td>28.24</td>
+                  <td>43.63</td>
+                  <td>3.00</td>
+                </tr>
+                <tr>
+                  <td>MMD-Agent</td>
+                  <td>GPT-5.2</td>
+                  <td>26.40</td>
+                  <td>23.42</td>
+                  <td>41.98</td>
+                  <td>2.00</td>
+                </tr>
+                <tr>
+                  <td>T2-Agent</td>
+                  <td>GPT-5.2</td>
+                  <td>28.20</td>
+                  <td>26.00</td>
+                  <td>42.68</td>
+                  <td>2.60</td>
+                </tr>
+                <tr class="winner">
+                  <td>ReMMD-Agent</td>
+                  <td>GPT-5.2</td>
+                  <td>41.80</td>
+                  <td>39.12</td>
+                  <td>45.15</td>
+                  <td>5.00</td>
+                </tr>
+                <tr>
+                  <td>ReMMD-Agent</td>
+                  <td>Qwen3.5-9B</td>
+                  <td>37.20</td>
+                  <td>37.18</td>
+                  <td>46.97</td>
+                  <td>10.00</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="result-highlights" aria-label="Result highlights">
+              <div>
+                <strong>41.80%</strong>
+                <span>best L1 accuracy</span>
+              </div>
+              <div>
+                <strong>39.12%</strong>
+                <span>best L1 macro-F1</span>
+              </div>
+              <div>
+                <strong>-17.5%</strong>
+                <span>cost vs. MMD-Agent</span>
+              </div>
+              <div>
+                <strong>-79.9%</strong>
+                <span>cost vs. T2-Agent</span>
+              </div>
+            </div>
+          </div>
+          <figure class="paper-figure">
+            <img src="assets/figures/leaderboard-confusion.webp" alt="ReMMD-Agent main confusion heatmaps">
+            <figcaption>Main L1 count heatmaps for ReMMD-Agent. Errors concentrate around neighboring middle labels.</figcaption>
+          </figure>
+          <figure class="paper-figure compact">
+            <img src="assets/figures/fine-grained.webp" alt="Fine-grained analysis by length, language, and labels">
+            <figcaption>Fine-grained Qwen3.5-9B analysis across text length, language, and distortion labels.</figcaption>
+          </figure>
+        </section>
+
+        <section id="samples" class="section-band reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Sample gallery</p>
+            <h2>Fifteen real benchmark samples across language and length</h2>
+            <p>
+              The gallery uses one short, one medium, and one long sample from each language. Cards
+              keep long text compact, while each sample opens into a full text and multi-image viewer.
+            </p>
+          </div>
+          <div class="filter-row" aria-label="Sample filters">
+            <button class="filter-button active" data-filter-type="all" data-filter-value="all">All</button>
+            <button class="filter-button" data-filter-type="language" data-filter-value="en">English</button>
+            <button class="filter-button" data-filter-type="language" data-filter-value="zh">Chinese</button>
+            <button class="filter-button" data-filter-type="language" data-filter-value="de">German</button>
+            <button class="filter-button" data-filter-type="language" data-filter-value="ja">Japanese</button>
+            <button class="filter-button" data-filter-type="language" data-filter-value="fr">French</button>
+            <button class="filter-button" data-filter-type="tier" data-filter-value="short">Short</button>
+            <button class="filter-button" data-filter-type="tier" data-filter-value="medium">Medium</button>
+            <button class="filter-button" data-filter-type="tier" data-filter-value="long">Long</button>
+          </div>
+          <div id="sampleGrid" class="sample-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="citation" class="section-band citation-band reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Citation</p>
+            <h2>Reference</h2>
+          </div>
+          <pre class="bibtex"><code>@article{dang2026remmd,
+  title = {ReMMD: Realistic Multilingual Multi-Image Agentic Verification for Multimodal Misinformation Detection},
+  author = {Dang, Chenhao and Zhu, Dantong and Jun, Yang and He, Conghui and Li, Weijia},
+  year = {2026}
+}</code></pre>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>ReMMD / ReMMDBench</span>
+        <span>Research use only. Placeholder paper and benchmark links will be activated after release.</span>
+      </footer>
+    </div>
+
+    <div id="sampleModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-panel">
+        <button class="modal-close" type="button" aria-label="Close sample viewer">Close</button>
+        <div class="modal-layout">
+          <div class="modal-gallery">
+            <div class="modal-image-stage">
+              <button class="image-nav prev-image" type="button" aria-label="Previous image">Prev</button>
+              <img id="modalImage" alt="">
+              <button class="image-nav next-image" type="button" aria-label="Next image">Next</button>
+            </div>
+            <div id="modalThumbs" class="modal-thumbs"></div>
+          </div>
+          <article class="modal-copy">
+            <div class="modal-meta">
+              <span id="modalLanguage"></span>
+              <span id="modalTier"></span>
+              <span id="modalVerdict"></span>
+            </div>
+            <h3 id="modalTitle"></h3>
+            <p id="modalTheme" class="modal-theme"></p>
+            <div class="modal-labels" id="modalLabels"></div>
+            <div class="modal-text" id="modalText"></div>
+            <div class="modal-rationale">
+              <strong>Rationale</strong>
+              <p id="modalRationale"></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
