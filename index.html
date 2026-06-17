@@ -26,6 +26,9 @@
           <a href="#samples">Samples</a>
           <a href="#citation">Citation</a>
         </nav>
+        <a class="header-logo" href="https://opendatalab.com/" target="_blank" rel="noreferrer" aria-label="OpenDataLab">
+          <img src="assets/logos/opendatalab.svg" alt="OpenDataLab logo">
+        </a>
       </header>
 
       <main id="top">
@@ -42,22 +45,28 @@
               evidence-centered multimodal misinformation detection.
             </p>
             <div class="hero-actions" aria-label="Project links">
-              <a class="action-button primary" href="https://github.com/DANG-ai/ReMMDBench-Agent" target="_blank" rel="noreferrer">Code</a>
-              <a class="action-button" href="#" data-placeholder="The arXiv link is reserved and will be activated after release.">Paper</a>
-              <a class="action-button" href="#" data-placeholder="The Hugging Face benchmark link is reserved and will be activated after release.">Benchmark</a>
+              <a class="action-button primary" href="https://github.com/DANG-ai/ReMMDBench-Agent" target="_blank" rel="noreferrer">
+                <span class="button-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.9 9.7.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 2.9.9.1-.7.4-1.1.7-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1.1-2.8-.1-.3-.5-1.3.1-2.7 0 0 .9-.3 2.9 1.1.8-.2 1.7-.3 2.7-.3.9 0 1.8.1 2.7.3 2-1.4 2.9-1.1 2.9-1.1.6 1.4.2 2.4.1 2.7.7.8 1.1 1.7 1.1 2.8 0 3.9-2.4 4.8-4.6 5 .4.3.7 1 .7 2v3c0 .3.2.6.7.5 4-1.4 6.9-5.2 6.9-9.7C22 6.6 17.5 2 12 2Z"/></svg>
+                </span>
+                Code
+              </a>
+              <a class="action-button" href="#" data-placeholder="The arXiv link is reserved and will be activated after release.">
+                <span class="button-icon arxiv-icon" aria-hidden="true">arXiv</span>
+                Paper
+              </a>
+              <a class="action-button" href="#" data-placeholder="The Hugging Face benchmark link is reserved and will be activated after release.">
+                <span class="button-icon hf-icon" aria-hidden="true">HF</span>
+                Benchmark
+              </a>
             </div>
             <div class="authors">
-              <p>
-                Chenhao Dang, Dantong Zhu, Yang Jun, Conghui He, Weijia Li
+              <p class="author-line">
+                Chenhao Dang<sup>1,2</sup>, Dantong Zhu<sup>4</sup>, Jun Yang<sup>5</sup>, Conghui He<sup>2,*</sup>, Weijia Li<sup>3,*</sup>
               </p>
-              <p>
-                Shanghai Jiao Tong University · Shanghai AI Laboratory · Tsinghua University · Central South University · CETC 15th Research Institute
+              <p class="affiliation-line">
+                <sup>1</sup>Shanghai Jiao Tong University · <sup>2</sup>Shanghai AI Laboratory · <sup>3</sup>Tsinghua University · <sup>4</sup>Central South University · <sup>5</sup>CETC 15th Research Institute · <sup>*</sup>Corresponding authors
               </p>
-            </div>
-            <div class="logo-strip" aria-label="Affiliation logos">
-              <img src="assets/logos/sjtu.webp" alt="Shanghai Jiao Tong University logo">
-              <img src="assets/logos/thu.webp" alt="Tsinghua University logo">
-              <img class="wide-logo" src="assets/logos/opendatalab.svg" alt="OpenDataLab logo">
             </div>
           </div>
         </section>
@@ -112,14 +121,16 @@
               <p>The task asks systems to calibrate partial truth, diagnose the mechanism of distortion, and justify the decision.</p>
             </article>
           </div>
-          <figure class="paper-figure">
-            <img src="assets/figures/benchmark-pipeline.webp" alt="ReMMDBench construction pipeline">
-            <figcaption>Benchmark construction controls topic, language, length, image provenance, label conditions, and evidence validation.</figcaption>
-          </figure>
-          <figure class="paper-figure compact">
-            <img src="assets/figures/benchmark-stats.webp" alt="ReMMDBench statistics panels">
-            <figcaption>Language, distortion, image provenance, and text-length distributions in ReMMDBench.</figcaption>
-          </figure>
+          <div class="benchmark-figures">
+            <figure class="paper-figure">
+              <img src="assets/figures/benchmark-pipeline.webp" alt="ReMMDBench construction pipeline">
+              <figcaption>Benchmark construction controls topic, language, length, image provenance, label conditions, and evidence validation.</figcaption>
+            </figure>
+            <figure class="paper-figure">
+              <img src="assets/figures/benchmark-stats.webp" alt="ReMMDBench statistics panels">
+              <figcaption>Language, distortion, image provenance, and text-length distributions in ReMMDBench.</figcaption>
+            </figure>
+          </div>
         </section>
 
         <section id="agent" class="section-band accent-band reveal">
@@ -246,11 +257,7 @@
               </div>
             </div>
           </div>
-          <figure class="paper-figure">
-            <img src="assets/figures/leaderboard-confusion.webp" alt="ReMMD-Agent main confusion heatmaps">
-            <figcaption>Main L1 count heatmaps for ReMMD-Agent. Errors concentrate around neighboring middle labels.</figcaption>
-          </figure>
-          <figure class="paper-figure compact">
+          <figure class="paper-figure leaderboard-chart">
             <img src="assets/figures/fine-grained.webp" alt="Fine-grained analysis by length, language, and labels">
             <figcaption>Fine-grained Qwen3.5-9B analysis across text length, language, and distortion labels.</figcaption>
           </figure>
@@ -286,7 +293,7 @@
           </div>
           <pre class="bibtex"><code>@article{dang2026remmd,
   title = {ReMMD: Realistic Multilingual Multi-Image Agentic Verification for Multimodal Misinformation Detection},
-  author = {Dang, Chenhao and Zhu, Dantong and Jun, Yang and He, Conghui and Li, Weijia},
+  author = {Dang, Chenhao and Zhu, Dantong and Yang, Jun and He, Conghui and Li, Weijia},
   year = {2026}
 }</code></pre>
         </section>
