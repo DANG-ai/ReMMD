@@ -294,26 +294,10 @@ h3 {
   fill: currentColor;
 }
 
-.arxiv-icon,
-.hf-icon {
-  width: auto;
-  min-width: 30px;
-  padding: 0 5px;
-  border-radius: 6px;
-  background: rgba(22, 32, 42, 0.08);
-  font-size: 0.66rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.hf-icon {
-  color: #8b5d00;
-  background: rgba(246, 190, 59, 0.22);
-}
-
-.action-button.primary .arxiv-icon,
-.action-button.primary .hf-icon {
-  background: rgba(255, 255, 255, 0.18);
+.button-icon img {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
 }
 
 .authors {
