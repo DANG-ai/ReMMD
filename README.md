@@ -28,4 +28,4 @@ If Pages is not live yet, enable it from repository settings:
 
 - Code: https://github.com/DANG-ai/ReMMDBench-Agent
 - Paper: reserved placeholder
-- Benchmark: reserved placeholder
+- Benchmark: https://huggingface.co/datasets/DDAI-D/ReMMDBench
