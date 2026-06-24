@@ -26,6 +26,6 @@ If Pages is not live yet, enable it from repository settings:
 
 ## Links
 
-- Code: https://github.com/DANG-ai/ReMMDBench-Agent
-- Paper: reserved placeholder
+- Code: https://github.com/DANG-ai/ReMMD-Agent
+- Paper: https://arxiv.org/abs/2606.24112
 - Benchmark: https://huggingface.co/datasets/DDAI-D/ReMMDBench
